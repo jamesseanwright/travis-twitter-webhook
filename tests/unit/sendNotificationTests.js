@@ -36,9 +36,10 @@ var mockTwitterPost;
 
 describe('the sendNotification route', function () {
 	it('should reject the request if the auth header is invalid', function () {
-		sinon.stub(fakeReq, 'get').withArgs('Authorization').returns('wrong!');
+		var stubGet = sinon.stub(fakeReq, 'get');
+		stubGet.withArgs('Authorization').returns('wrong!');
+		stubGet.withArgs('Travis-Repo-Slug').returns('salt');
 		mockNext = sinon.mock(fakeMiddleware).expects('next').once().withArgs(401);
-		process.env.SALT = 'salt';
 		process.env.TRAVIS_TOKEN = 'actual token innit';
 
 		sendNotification(fakeReq, null, fakeMiddleware.next);
@@ -49,9 +50,10 @@ describe('the sendNotification route', function () {
 	});
 
 	it('should reject the request if the payload is invalid', function () {
-		sinon.stub(fakeReq, 'get').withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
+		var stubGet = sinon.stub(fakeReq, 'get');
+		stubGet.withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
+		stubGet.withArgs('Travis-Repo-Slug').returns('salt');
 		mockNext = sinon.mock(fakeMiddleware).expects('next').once().withArgs(400);
-		process.env.SALT = 'salt';
 		process.env.TRAVIS_TOKEN = 'actual token innit';
 
 		sendNotification(fakeReq, null, fakeMiddleware.next);
@@ -68,8 +70,10 @@ describe('the sendNotification route', function () {
 							  .post('/1.1/statuses/update.json')
 							  .reply(200);
 
-		sinon.stub(fakeReq, 'get').withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
-		process.env.SALT = 'salt';
+		var stubGet = sinon.stub(fakeReq, 'get');
+		stubGet.withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
+		stubGet.withArgs('Travis-Repo-Slug').returns('salt');
+
 		process.env.TRAVIS_TOKEN = 'actual token innit';
 
 		fakeReq.body.payload = JSON.stringify(receivedPayload);
@@ -100,8 +104,10 @@ describe('the sendNotification route', function () {
 							  .post('/1.1/statuses/update.json')
 							  .reply(500);
 
-		sinon.stub(fakeReq, 'get').withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
-		process.env.SALT = 'salt';
+		var stubGet = sinon.stub(fakeReq, 'get');
+		stubGet.withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
+		stubGet.withArgs('Travis-Repo-Slug').returns('salt');
+		
 		process.env.TRAVIS_TOKEN = 'actual token innit';
 
 		fakeReq.body.payload = JSON.stringify(receivedPayload);

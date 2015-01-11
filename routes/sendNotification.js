@@ -25,7 +25,7 @@ function isValid(payload) {
 }
 
 module.exports = function (req, res, next) {
-	var actualHash = sha256Helper(process.env.SALT, process.env.TRAVIS_TOKEN, 'hex');
+	var actualHash = sha256Helper(req.get('Travis-Repo-Slug'), process.env.TRAVIS_TOKEN, 'hex');
 	var payload;
 	var tweet;
 
