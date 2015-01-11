@@ -1,6 +1,5 @@
 'use strict';
 
-var nock = require('nock');
 var Twitter = require('twitter');
 var sha256Helper = require('../encryption/sha256Helper');
 var requiredProps = ['number', 'status_message', 'commit_message', 'build_url', 'repository'];
