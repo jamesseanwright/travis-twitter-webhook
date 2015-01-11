@@ -1,0 +1,25 @@
+{
+  "name": "travis-twitter-webhook",
+  "version": "1.0.0",
+  "description": "A Node server to post Travis CI Webhook notifications to Twitter",
+  "repository": "https://github.com/jamesseanwright/travis-twitter-webhook"
+  "keywords": [
+    "travis",
+    "twitter",
+    "webhook"
+  ],
+  "author": "James Wright",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
+  },
+  "dependencies": {
+    "express": "^4.10.7",
+    "twitter": "^1.0.2"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha tests/*"
+  }
+}
