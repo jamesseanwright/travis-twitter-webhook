@@ -2,7 +2,7 @@
   "name": "travis-twitter-webhook",
   "version": "1.0.0",
   "description": "A Node server to post Travis CI Webhook notifications to Twitter",
-  "repository": "https://github.com/jamesseanwright/travis-twitter-webhook"
+  "repository": "https://github.com/jamesseanwright/travis-twitter-webhook",
   "keywords": [
     "travis",
     "twitter",
