@@ -61,12 +61,12 @@ describe('the sendNotification route', function () {
 		fakeMiddleware.next.restore();
 	});
 
-	it('should tweet the notification if everything is valid', function () {
+	it('should tweet the notification if everything is valid', function (done) {
 		var expectedTweet = 'Build ' + receivedPayload.number + ' of ' + receivedPayload.repository.name + ' has ' + receivedPayload.status_message.toLowerCase() + ': ' + receivedPayload.build_url;
 
-		var updateEndpoint = nock('https://api.twitter.com:443')
-							  .post('/1.1/statuses/update.json', "status=Build%201%20of%20jamesswright.co.uk%20has%20passed%3A%20https%3A%2F%2Ftravis-ci.org%2Fjamesseanwright%2Fjamesswright.co.uk")
-							  .reply(200, doAssertions);
+		var updateEndpoint = nock('https://api.twitter.com')
+							  .post('/1.1/statuses/update.json')
+							  .reply(200);
 
 		sinon.stub(fakeReq, 'get').withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
 		process.env.SALT = 'salt';
@@ -84,12 +84,45 @@ describe('the sendNotification route', function () {
 		sendNotification(fakeReq, fakeRes, null);
 
 		//TODO: find a better way!
+		setTimeout(doAssertions, 10);
+
 		function doAssertions() {
 			updateEndpoint.done();
 			mockRes.verify();
 			fakeRes.json.restore();
 			fakeReq.get.restore();
-			console.log('asserted!');
+			done();
+		}
+	});
+
+	it('should invoke the middleware when the Twitter API call fails', function (done) {
+		var updateEndpoint = nock('https://api.twitter.com')
+							  .post('/1.1/statuses/update.json')
+							  .reply(500);
+
+		sinon.stub(fakeReq, 'get').withArgs('Authorization').returns('f2c18165b659e387d0f2aaf9cd577f01dc8bd11d56aa7ffb022a69ad734e2aea');
+		process.env.SALT = 'salt';
+		process.env.TRAVIS_TOKEN = 'actual token innit';
+
+		fakeReq.body.payload = JSON.stringify(receivedPayload);
+
+		process.env.CONSUMER_KEY = 'consumer key';
+		process.env.CONSUMER_SECRET = 'consumer secret';
+		process.env.ACCESS_TOKEN_KEY = 'token key';
+		process.env.ACCESS_TOKEN_SECRET = 'token secret';
+
+		mockNext = sinon.mock(fakeMiddleware).expects('next').once().withArgs(500);
+		sendNotification(fakeReq, null, fakeMiddleware.next);
+
+		//TODO: find a better way!
+		setTimeout(doAssertions, 10);
+
+		function doAssertions() {
+			updateEndpoint.done();
+			mockNext.verify();
+			fakeMiddleware.next.restore();
+			fakeReq.get.restore();
+			done();
 		}
 	});
 });

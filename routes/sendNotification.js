@@ -35,8 +35,6 @@ module.exports = function (req, res, next) {
 		return;
 	};
 
-	console.log(req.body.payload);
-
 	payload = JSON.parse(req.body.payload);
 
 	if (!isValid(payload)) {
@@ -47,8 +45,6 @@ module.exports = function (req, res, next) {
 	tweet = 'Build ' + payload.number + ' of ' + payload.repository.name + ' has ' + payload.status_message.toLowerCase() + ': ' + payload.build_url;
 
 	client.post('statuses/update', { status: tweet }, function (err) {
-		console.log(err);
-
 		if (err) {
 			next(500);
 			return;
