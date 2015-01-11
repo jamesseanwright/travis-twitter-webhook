@@ -3,4 +3,4 @@
 Just a quick project using TDD to post Travis CI Webhook notifications to Twitter. Will update this README with instructions once it's done.
 
 ## Unit Tests
-Run `npm test` as per usual.
+Run `npm i` and then `npm test` as per usual.
