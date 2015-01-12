@@ -2,7 +2,7 @@
 <blockquote class="twitter-tweet" lang="en"><p>Build 25 of <a href="https://twitter.com/hashtag/jamesswright?src=hash">#jamesswright</a>.co.uk has passed: <a href="https://t.co/JJMujJr6jC">https://t.co/JJMujJr6jC</a></p>&mdash; James Wright (@JamesSWrightWeb) <a href="https://twitter.com/JamesSWrightWeb/status/554441547841024002">January 12, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Just a quick project using TDD to post Travis CI Webhook notifications to Twitter.
+Just a quick webhook project using TDD to tweet Travis CI build notifications.
 
 ## Usage
 To begin with, [fork](https://github.com/jamesseanwright/travis-twitter-webhook/fork) and clone the repository. You'll want to find a public host, such as [Heroku](https://www.heroku.com/) or [Cloudnode](http://cloudno.de/), if you can't host it yourself.
