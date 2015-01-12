@@ -65,5 +65,8 @@ Returned when the `TRAVIS_TOKEN` env variable is incorrect, or the `Authorizatio
 ### HTTP 500  - Twitter API error
 Returned when the POST to Twitter's `statuses/update` endpoint failed. This can occur when the API keys are set incorrectly or when the API has detected a duplicate tweet.
 
+##Contributions
+I'd be more than happy to accept contributions to this webhook. Just create an issue or a pull request. Please write tests for your code where possible.
+
 ## Unit Tests
 Simply run `npm test`.
