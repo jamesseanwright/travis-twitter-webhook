@@ -2,7 +2,7 @@
 
 var Twitter = require('twitter');
 var sha256Helper = require('../encryption/sha256Helper');
-var requiredProps = ['number', 'status_message', 'message', 'build_url', 'repository'];
+var requiredProps = ['number', 'status_message', 'build_url', 'repository'];
 
 var client = new Twitter({
 	consumer_key: process.env.CONSUMER_KEY,
@@ -41,7 +41,7 @@ module.exports = function (req, res, next) {
 		return;
 	}
 
-	tweet = 'Build ' + payload.number + ' of ' + payload.repository.name + ' has ' + payload.status_message.toLowerCase() + ': ' + payload.build_url;
+	tweet = 'Build ' + payload.number + ' of #' + payload.repository.name + ' has ' + payload.status_message.toLowerCase() + ': ' + payload.build_url;
 
 	client.post('statuses/update', { status: tweet }, function (err) {
 		if (err) {

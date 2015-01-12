@@ -4,7 +4,6 @@ var sendNotification = require('../../routes/sendNotification');
 var receivedPayload = {
 	number: "1",
 	status_message: 'Passed',
-	message: 'Commit message',
 	build_url: 'https://travis-ci.org/jamesseanwright/jamesswright.co.uk',
 	repository: {
 		name: 'jamesswright.co.uk'
@@ -64,7 +63,7 @@ describe('the sendNotification route', function () {
 	});
 
 	it('should tweet the notification if everything is valid', function (done) {
-		var expectedTweet = 'Build ' + receivedPayload.number + ' of ' + receivedPayload.repository.name + ' has ' + receivedPayload.status_message.toLowerCase() + ': ' + receivedPayload.build_url;
+		var expectedTweet = 'Build ' + receivedPayload.number + ' of #' + receivedPayload.repository.name + ' has ' + receivedPayload.status_message.toLowerCase() + ': ' + receivedPayload.build_url;
 
 		var updateEndpoint = nock('https://api.twitter.com')
 							  .post('/1.1/statuses/update.json')
