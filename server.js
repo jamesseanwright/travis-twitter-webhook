@@ -5,11 +5,12 @@ var express = require('express');
 var app = express();
 var sendNotification = require('./routes/sendNotification');
 var handleError = require('./routes/handleError');
+var port = process.env.WEBHOOK_PORT || 3000
 
 app.use(handleError);
 app.use(bodyParser.urlencoded({ extended: false }));
-app.post('/notifications', sendNotification, handleError);
+app.post('/', sendNotification, handleError);
 
-app.listen(3000, function () {
-	console.log('Webhook server running on port 3000');
+app.listen(port, function () {
+	console.log('Webhook server running on port', port);
 });
