@@ -5,7 +5,7 @@
 Just a quick project using TDD to post Travis CI Webhook notifications to Twitter.
 
 ## Usage
-To begin with, [fork](https://github.com/jamesseanwright/travis-twitter-webhook/fork) and clone the repository. You'll want to find a public host, such as [Heroku](https://www.heroku.com/) or (Cloudnode)[http://cloudno.de/], if you can't host it yourself.
+To begin with, [fork](https://github.com/jamesseanwright/travis-twitter-webhook/fork) and clone the repository. You'll want to find a public host, such as [Heroku](https://www.heroku.com/) or [Cloudnode](http://cloudno.de/), if you can't host it yourself.
 
 Run `npm i` to install the required dependencies.
 
