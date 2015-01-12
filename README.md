@@ -11,7 +11,7 @@ Run `npm i` to install the required dependencies.
 
 ### Setting up Twitter authorization
 Before configuring the server, you'll need to create and authorise a new Twitter app:
-1. Go to (apps.twitter.com)[https://apps.twitter.com] and sign in with the Twitter account from which the tweets will be published
+1. Go to [apps.twitter.com](https://apps.twitter.com) and sign in with the Twitter account from which the tweets will be published
 2. Click the *Create New App* button.
 3. Complete the form with the appropriate information. For the website, you could list the production website which you're building with Travis
 4. Click *Create your Twitter application*
