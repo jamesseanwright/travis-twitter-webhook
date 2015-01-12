@@ -33,9 +33,7 @@ module.exports = function (req, res, next) {
 		next(401);
 		return;
 	};
-
-	console.log(req.body.payload);
-
+	
 	payload = JSON.parse(req.body.payload);
 
 	if (!isValid(payload)) {
