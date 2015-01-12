@@ -57,6 +57,11 @@ Although these are ignored by Travis, there are some response bodies to aid with
 ```
 { "error": "some message" }
 ```
+### HTTP 200 - Success
+Returned when the tweet was successfully posted, with the following body:
+```
+{ "result": "success" }
+```
 
 ### HTTP 400 - Invalid payload
 Returned when the required properties in Travis' payload are missing.
