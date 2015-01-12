@@ -2,7 +2,7 @@
 
 var Twitter = require('twitter');
 var sha256Helper = require('../encryption/sha256Helper');
-var requiredProps = ['number', 'status_message', 'commit_message', 'build_url', 'repository'];
+var requiredProps = ['number', 'status_message', 'message', 'build_url', 'repository'];
 
 var client = new Twitter({
 	consumer_key: process.env.CONSUMER_KEY,
@@ -33,6 +33,8 @@ module.exports = function (req, res, next) {
 		next(401);
 		return;
 	};
+
+	console.log(req.body.payload);
 
 	payload = JSON.parse(req.body.payload);
 

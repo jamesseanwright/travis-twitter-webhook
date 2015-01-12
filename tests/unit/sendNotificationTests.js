@@ -4,7 +4,7 @@ var sendNotification = require('../../routes/sendNotification');
 var receivedPayload = {
 	number: "1",
 	status_message: 'Passed',
-	commit_message: 'Commit message',
+	message: 'Commit message',
 	build_url: 'https://travis-ci.org/jamesseanwright/jamesswright.co.uk',
 	repository: {
 		name: 'jamesswright.co.uk'
