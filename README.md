@@ -11,6 +11,7 @@ Run `npm i` to install the required dependencies.
 
 ### Setting up Twitter authorization
 Before configuring the server, you'll need to create and authorise a new Twitter app:
+
 1. Go to [apps.twitter.com](https://apps.twitter.com) and sign in with the Twitter account from which the tweets will be published
 2. Click the *Create New App* button.
 3. Complete the form with the appropriate information. For the website, you could list the production website which you're building with Travis
@@ -23,6 +24,7 @@ You should be returned to the *Keys and Access Tokens* tab with the necessary in
 
 ### Configuring the server
 The server is configured via these environment variables:
+
 * `WEBHOOK_PORT` - the HTTP port on which the server should run. Defaults to 3000 if unspecified
 * `TRAVIS_TOKEN` - the authorization token associated with your Travis CI account. If you're logged in, you can find it [here](https://travis-ci.org/profile/info)
 * `CONSUMER_KEY` - the *Consumer Key (API Key)* listed in the *Keys and Access Tokens* of your Twitter app
