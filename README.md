@@ -50,7 +50,7 @@ Read [this guide](http://docs.travis-ci.com/user/notifications/#Webhook-notifica
 You now should be good to go. Whenever you make a new build, it should tweet depending upon your configuration. With the most basic configuration as above, it will tweet on both the success and failure of your build.
 
 ## Authorisation
-This webhook is compliant with Travis' [authorisation](http://docs.travis-ci.com/user/notifications/#Authorization-for-Webhooks) mechanism, so only a request triggered by Travis for one of your own repository will be accepted.
+This webhook is compliant with Travis' [authorisation](http://docs.travis-ci.com/user/notifications/#Authorization-for-Webhooks) mechanism, so only a request triggered by Travis for one of your own repositories will be accepted.
 
 ## Responses
 Although these are ignored by Travis, there are some response bodies to aid with debugging. Error messages are returned with the respective status code and the following body format:
