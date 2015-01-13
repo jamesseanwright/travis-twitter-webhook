@@ -22,7 +22,7 @@ Before configuring the server, you'll need to create and authorise a new Twitter
 
 You should be returned to the *Keys and Access Tokens* tab with the necessary information to tweet via the webhook.
 
-**Note:** In terms of the roadmap, I am considering writing a centralised HTTPS proxy server that will use a single Twitter app for authentication and will return the access tokens to the client; this would eradicate the above steps in favour of simply authorising said Twitter app against you account. Any thoughts on this would be greatly appreciated.
+**Note:** In terms of the roadmap, I am considering writing a centralised HTTPS server that will use a single Twitter app for authentication and proxy Twitter API requests; this would eradicate the above steps in favour of simply authorising said Twitter app against you account and exporting your access token and secret as environment variables. Any thoughts on this would be greatly appreciated.
 
 ### Configuring the server
 The server is configured via these environment variables:
