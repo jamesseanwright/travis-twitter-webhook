@@ -22,6 +22,8 @@ Before configuring the server, you'll need to create and authorise a new Twitter
 
 You should be returned to the *Keys and Access Tokens* tab with the necessary information to tweet via the webhook.
 
+**Note:** In terms of the roadmap, I am considering writing a centralised HTTPS proxy server that will use a single Twitter app for authentication and will return the access tokens to the client; this would eradicate the above steps in favour of simply authorising said Twitter app against you account. Any thoughts on this would be greatly appreciated.
+
 ### Configuring the server
 The server is configured via these environment variables:
 
@@ -47,7 +49,7 @@ There's no additional route to specify as the server's root endpoint handles the
 
 Read [this guide](http://docs.travis-ci.com/user/notifications/#Webhook-notification) for more advanced integrations.
 
-You now should be good to go. Whenever you make a new build, it should tweet depending upon your configuration. With the most basic configuration as above, it will tweet on both the success and failure of your build.
+You're now good to go. Whenever you make a new build, it should tweet depending upon your configuration. With the most basic configuration as above, it will tweet on both the success and failure of your build.
 
 ## Authorisation
 This webhook is compliant with Travis' [authorisation](http://docs.travis-ci.com/user/notifications/#Authorization-for-Webhooks) mechanism, so only a request triggered by Travis for one of your own repositories will be accepted.
